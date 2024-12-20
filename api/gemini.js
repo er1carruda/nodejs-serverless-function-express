@@ -17,7 +17,6 @@ export default async function handler(req, res) {
 
   const data = await response.json();
   console.log('Dados recebidos da API Gemini:', JSON.stringify(data, null, 2));
-  const answer = data?.contents?.[0]?.parts?.[0]?.text || 'Não foi possível obter uma resposta.';
-
+  const answer = data?.candidates?.[0]?.content?.parts?.[0]?.text || 'Não foi possível obter uma resposta.';
   res.status(200).send(answer);
 }
